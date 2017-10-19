@@ -7,7 +7,7 @@ export class ProductsService {
 
   constructor(private db: AngularFirestore) { }
 
-  get products(): Observable<any[]> {
+  get productList(): Observable<any[]> {
 
     return this.db.collection('products').valueChanges();
 
