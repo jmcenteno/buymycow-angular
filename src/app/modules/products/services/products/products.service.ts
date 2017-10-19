@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
+import { database } from 'firebase';
 
 @Injectable()
 export class ProductsService {
 
-  constructor(private db: AngularFirestore) { }
+  constructor() { }
 
-  get productList(): Observable<any[]> {
+  get productList() {
 
-    return this.db.collection('products').valueChanges();
+    return database().ref('products')
+
+  }
+
+  getProductDetails(id) {
+
+    return database().ref(`products/${id}`);
 
   }
 
