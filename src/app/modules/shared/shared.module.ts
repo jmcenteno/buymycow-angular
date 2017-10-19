@@ -6,13 +6,14 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule
   ],
-  declarations: [NavbarComponent, FooterComponent, PageNotFoundComponent, PageHeaderComponent],
+  declarations: [NavbarComponent, FooterComponent, PageNotFoundComponent, PageHeaderComponent, SpinnerComponent],
   exports: [
     RouterModule,
     NavbarComponent,
