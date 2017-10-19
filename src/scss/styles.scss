@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@import './themes/cosmo/variables';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+@import './themes/cosmo/bootswatch';
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  padding-top: $navbar-height;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
