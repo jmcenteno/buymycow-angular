@@ -1,0 +1,14 @@
+.wrapper {
+  flex: 1
+}
+
+.page {
+  padding: 16px 0 70px;
+  margin-bottom: -50px;
+  height: 100%;
+
+  > .container {
+    height: 100%;
+  }
+
+}
