@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { APP_NAME } from '../../../../config/app.config';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  title: string;
+  collapsed: boolean;
+
+  constructor() {
+
+    this.title = APP_NAME;
+    this.collapsed = true;
+
+  }
 
   ngOnInit() {
+  }
+
+  toggleMenu() {
+
+    this.collapsed = !this.collapsed;
+
   }
 
 }
