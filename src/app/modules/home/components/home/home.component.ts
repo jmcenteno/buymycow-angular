@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { APP_NAME } from '../../../../config/app.config';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  title: string;
+
+  constructor() { 
+
+    this.title = APP_NAME;
+    
+  }
 
   ngOnInit() {
   }
