@@ -3,8 +3,8 @@
     
     <h3 class="h3 product-name">{{ product.name }}</h3>
     
-    <div *ngIf="product.sold">
-      <div class="bg-danger">
+    <div class="sold" *ngIf="product.sold">
+      <div class="content bg-danger">
         <strong>Sold</strong>
       </div>
     </div>
