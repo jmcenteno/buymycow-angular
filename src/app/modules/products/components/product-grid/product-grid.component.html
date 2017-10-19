@@ -1,0 +1,10 @@
+<ng-template ngFor let-page [ngForOf]="pages">
+  <div class="row">
+    <div class="col-sm-4" *ngFor="let product of page">
+      
+      <app-single-product [product]="product">
+      </app-single-product>
+      
+    </div>
+  </div>
+</ng-template>

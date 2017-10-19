@@ -1,0 +1,29 @@
+<div class="panel panel-default">
+  <div class="panel-body text-center">
+    
+    <h3 class="h3 product-name">{{ product.name }}</h3>
+    
+    <div *ngIf="product.sold">
+      <div class="bg-danger">
+        <strong>Sold</strong>
+      </div>
+    </div>
+    
+    <img 
+      [attr.src]="product.picture || './assets/img/no-img.png'"
+      [attr.alt]="product.name"
+      class="img-responsive center-block" 
+    />
+    
+    <p class="lead">
+      {{
+        remainingTime.difference ? 
+          remainingTime.difference + " " + remainingTime.interval + " left" :
+          "Time\'s Up"
+      }}
+    </p>
+
+    <a [routerLink]="'/products/' + product.key" class="btn btn-primary">View Details</a>
+
+  </div>
+</div>
