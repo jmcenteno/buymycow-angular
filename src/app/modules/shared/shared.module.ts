@@ -19,7 +19,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     NavbarComponent,
     FooterComponent,
     PageNotFoundComponent,
-    PageHeaderComponent
+    PageHeaderComponent,
+    SpinnerComponent
   ]
 })
 export class SharedModule {
