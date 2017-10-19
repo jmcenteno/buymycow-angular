@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -13,8 +13,21 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
   ],
   declarations: [NavbarComponent, FooterComponent, PageNotFoundComponent],
   exports: [
+    RouterModule,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    PageNotFoundComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+
+  static forRoot(): ModuleWithProviders {
+    
+    return {
+      ngModule: SharedModule,
+      providers: []
+    };
+
+  }
+
+}

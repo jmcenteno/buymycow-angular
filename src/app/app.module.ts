@@ -9,15 +9,15 @@ import { HomeModule } from './modules/home/home.module';
 import { ProductsModule } from './modules/products/products.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule,
+    SharedModule.forRoot(),
     HomeModule,
     ProductsModule
+  ],
+  declarations: [
+    AppComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
