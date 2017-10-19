@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { APP_NAME } from '../../../../config/app.config';
+
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -7,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  title: string;
+  year: number;
+
+  constructor() { 
+
+    this.title = APP_NAME;
+    this.year = (new Date()).getFullYear();
+
+  }
 
   ngOnInit() {
   }
