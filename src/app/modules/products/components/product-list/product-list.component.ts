@@ -21,15 +21,34 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.subs.products = this.productsService.productList.subscribe(data => {
-      this.products = data;
-    });
+    this.getProducts();
 
   }
 
   ngOnDestroy() {
 
     Object.keys(this.subs).forEach(key => this.subs[key].unsubscribe());
+
+  }
+
+  private getProducts() {
+
+    this.productsService.productList.on('value', (snapshot: any) => {
+      
+      const data = [];
+
+      snapshot.forEach((item: any) => {
+        
+        data.push({
+          key: item.key,
+          ...item.val()
+        });
+        
+      });
+
+      this.products = data;
+      
+    });
 
   }
 
