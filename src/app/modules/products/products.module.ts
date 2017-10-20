@@ -9,6 +9,11 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductGridComponent } from './components/product-grid/product-grid.component';
 import { SingleProductComponent } from './components/single-product/single-product.component';
+import { CurrentPriceComponent } from './components/current-price/current-price.component';
+import { HighestBidderComponent } from './components/highest-bidder/highest-bidder.component';
+import { BidHistoryComponent } from './components/bid-history/bid-history.component';
+import { RemainingTimeComponent } from './components/remaining-time/remaining-time.component';
+import { BidFormComponent } from './components/bid-form/bid-form.component';
 
 @NgModule({
   imports: [
@@ -16,7 +21,7 @@ import { SingleProductComponent } from './components/single-product/single-produ
     ProductsRoutingModule,
     SharedModule
   ],
-  declarations: [ProductListComponent, ProductDetailsComponent, ProductGridComponent, SingleProductComponent],
+  declarations: [ProductListComponent, ProductDetailsComponent, ProductGridComponent, SingleProductComponent, CurrentPriceComponent, HighestBidderComponent, BidHistoryComponent, RemainingTimeComponent, BidFormComponent],
   providers: [
     ProductsService,
     BidsService
