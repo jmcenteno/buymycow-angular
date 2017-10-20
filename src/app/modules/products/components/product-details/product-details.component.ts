@@ -12,13 +12,17 @@ import { BidsService } from '../../services/bids/bids.service';
 export class ProductDetailsComponent implements OnInit {
 
   product: any;
-  bids: any[] = [];
+  bids: any[];
   
   constructor(
     private route: ActivatedRoute,
     private productService: ProductsService,
     private bidsService: BidsService
-  ) { }
+  ) { 
+
+    this.bids = [];
+
+  }
 
   ngOnInit() {
 
@@ -35,6 +39,33 @@ export class ProductDetailsComponent implements OnInit {
             };
 
           }
+
+        });
+
+      this.bidsService.getBidsByProduct(params.id)
+        .on('value', (snapshot: any) => {
+
+          const data = [];
+
+          if (snapshot.val()) {
+            console.log(snapshot.val())
+
+            snapshot.forEach((item: any) => {
+              
+              data.push({
+                key: item.key,
+                ...item.val()
+              });
+              
+            });
+
+            data.sort((a, b) => a.amount - b.amount);
+            data.reverse();
+            console.log(data)
+
+          }
+
+          this.bids = data;
 
         });
 
