@@ -1,8 +1,8 @@
-<div class="spinner" *ngIf="!product">
+<div class="spinner" *ngIf="!product || !bids">
   <app-spinner></app-spinner>
 </div>
 
-<article class="" *ngIf="product">
+<article class="" *ngIf="product && bids">
 
   <app-page-header [title]="product.name">
   </app-page-header>
@@ -51,7 +51,7 @@
               [bids]="bids"
               [user]="currentUser"
               (setUser)="setUser()"
-              (submit)="createBid()">
+              (submit)="createBid($event)">
             </app-bid-form>
           </section>
 
