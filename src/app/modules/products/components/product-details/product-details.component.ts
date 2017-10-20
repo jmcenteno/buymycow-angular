@@ -13,6 +13,7 @@ export class ProductDetailsComponent implements OnInit {
 
   product: any;
   bids: any[];
+  errors: any;
   
   constructor(
     private route: ActivatedRoute,
@@ -22,6 +23,7 @@ export class ProductDetailsComponent implements OnInit {
   ) { 
 
     this.bids = [];
+    this.errors = {};
 
   }
 
@@ -33,6 +35,22 @@ export class ProductDetailsComponent implements OnInit {
       this.getBidHistory(params.id);
 
     });
+
+  }
+
+  createBid(bid) {
+
+    this.bidsService.createBid(bid, this.product)
+      .then(() => {
+
+        this.errors.createBid = null;
+
+      })
+      .catch((error) => {
+        console.log(error)
+        this.errors.createBid = error.message;
+
+      });
 
   }
 

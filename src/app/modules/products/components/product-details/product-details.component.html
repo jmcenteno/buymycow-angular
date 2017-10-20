@@ -46,6 +46,10 @@
           <br />
 
           <section *ngIf="!product.sold">
+            <div class="alert alert-danger" *ngIf="errors.createBid">
+              <h4>Error</h4>
+              {{ errors.createBid }}
+            </div>
             <app-bid-form 
               [product]="product"
               [bids]="bids"

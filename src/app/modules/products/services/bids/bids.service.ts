@@ -45,7 +45,7 @@ export class BidsService {
         } else {
           
           reject({
-            message: 'This auction is no longer active' 
+            message: 'This auction is no longer active.' 
           });
   
         }
