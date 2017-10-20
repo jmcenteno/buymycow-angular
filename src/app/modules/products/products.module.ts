@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared/shared.module';
 import { ProductsRoutingModule } from './products-routing.module';
@@ -18,6 +19,7 @@ import { BidFormComponent } from './components/bid-form/bid-form.component';
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     ProductsRoutingModule,
     SharedModule
   ],
