@@ -6,7 +6,7 @@ import * as moment from 'moment';
   templateUrl: './single-product.component.html',
   styleUrls: ['./single-product.component.scss']
 })
-export class SingleProductComponent implements OnInit {
+export class SingleProductComponent implements OnInit, OnDestroy {
 
   @Input() product: any;
 
@@ -22,6 +22,12 @@ export class SingleProductComponent implements OnInit {
     this.timer = setInterval(() => {
       this.remainingTime = this.getRemainingTime(this.product.endDate);
     }, 1000);
+
+  }
+
+  ngOnDestroy() {
+    
+    clearInterval(this.timer);
 
   }
 
