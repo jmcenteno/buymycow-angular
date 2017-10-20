@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import Numeral from 'numeral';
 
 @Component({
@@ -6,7 +6,7 @@ import Numeral from 'numeral';
   templateUrl: './current-price.component.html',
   styleUrls: ['./current-price.component.scss']
 })
-export class CurrentPriceComponent implements OnInit {
+export class CurrentPriceComponent implements OnInit, OnChanges {
 
   @Input() bids: any[];
   @Input() product: any;
@@ -17,7 +17,19 @@ export class CurrentPriceComponent implements OnInit {
 
   ngOnInit() {
 
-    this.currentPrice = (
+    this.currentPrice = this.getCurrentPrice();
+
+  }
+
+  ngOnChanges() {
+
+    this.currentPrice = this.getCurrentPrice();
+
+  }
+
+  private getCurrentPrice() {
+
+    return (
       this.bids.length ?
         this.bids[0].amount :
         this.product.initialPrice
