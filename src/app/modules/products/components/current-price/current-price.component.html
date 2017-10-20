@@ -1,0 +1,7 @@
+<small>
+  {{ (product.sold ? 'Sold' : 'Current') + ' Price' }}
+</small>
+
+<br />
+
+<strong>{{ currentPrice | currency: 'USD': '$' }}</strong>
