@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { ValidationService } from './services/validation/validation.service';
+import { UtilitiesService } from './services/utilities/utilities.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -16,7 +17,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
   ],
   declarations: [NavbarComponent, FooterComponent, PageNotFoundComponent, PageHeaderComponent, SpinnerComponent],
   providers: [
-    ValidationService
+    ValidationService,
+    UtilitiesService,
   ],
   exports: [
     RouterModule,
