@@ -1,0 +1,41 @@
+.panel {
+  
+  .product-name {
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 768px;
+    margin-top: 0;
+  }
+  
+  &-body {
+    overflow: hidden;
+  }
+
+}
+
+img {
+  margin-bottom: 16px;
+}
+
+.sold {
+  position: relative;
+  
+  .content {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    transform: rotate(-45deg);
+    position: absolute;
+    top: -100px;
+    left: -70px;
+    width: 120px;
+    height: 100px;
+    padding: 8px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.2em;
+  }
+
+}

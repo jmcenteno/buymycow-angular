@@ -1,0 +1,50 @@
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%
+}
+
+.current-price {
+  margin-bottom: 32px;
+}
+
+.product-image {
+  overflow: hidden;
+
+  img {
+    margin: 0 auto 32px;
+  }
+
+}
+
+.bid-history {
+  margin-top: 32px;
+
+  .panel-body {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+}
+
+.sold {
+  position: relative;
+  
+  .content {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    transform: rotate(-45deg);
+    position: absolute;
+    top: -40px;
+    left: -60px;
+    width: 140px;
+    height: 100px;
+    padding: 8px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.2em;
+  }
+
+}

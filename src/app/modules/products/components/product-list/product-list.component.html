@@ -1,0 +1,13 @@
+<div class="spinner" *ngIf="!products">
+  <app-spinner></app-spinner>
+</div>
+
+<div *ngIf="products">
+
+  <app-page-header title="Products">
+  </app-page-header>
+
+  <app-product-grid [products]="products">
+  </app-product-grid>
+  
+</div>

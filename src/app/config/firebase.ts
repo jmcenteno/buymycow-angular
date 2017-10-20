@@ -1,11 +1,8 @@
-import { FirebaseAppConfig } from 'angularfire2';
-
-// add your own configuration here
-export const FIREBASE_CONFIG: FirebaseAppConfig = {
-  apiKey: "",
-  authDomain: "",
-  databaseURL: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: ""
+export const FIREBASE_CONFIG: any = {
+  apiKey: "AIzaSyA_7XDmIDexdhQvrSpcnjHGU0o59HiLB_g",
+  authDomain: "buymycow.firebaseapp.com",
+  databaseURL: "https://buymycow.firebaseio.com",
+  projectId: "buymycow",
+  storageBucket: "buymycow.appspot.com",
+  messagingSenderId: "935442442430"
 };

@@ -1,0 +1,9 @@
+<p class="lead">
+  {{ 
+    remainingTime.difference ? 
+    remainingTime.difference + " " + remainingTime.interval + " left" : 
+    "Time's Up!" 
+  }}
+</p>
+
+<p>End Date: {{ product.endDate | date: 'short' }}</p>

@@ -1,0 +1,83 @@
+<div class="spinner" *ngIf="!product || !bids">
+  <app-spinner></app-spinner>
+</div>
+
+<article class="" *ngIf="product && bids">
+
+  <app-page-header [title]="product.name">
+  </app-page-header>
+
+  <div class="row">
+    <div class="col-md-8">
+
+      <div class="row">
+        <div class="col-sm-6">
+
+          <div class="h1 visible-xs current-price">
+            <app-current-price [product]="product" [bids]="bids">
+            </app-current-price>
+          </div>
+
+          <aside class="product-image">
+            <div class="sold" *ngIf="product.sold">
+              <div class="content bg-danger text-center">
+                <strong>Sold</strong>
+              </div>
+            </div>
+            <img 
+              [attr.src]="product.picture || './assets/img/no-img.png'" 
+              class="img-responsive"
+              [attr.alt]="product.name"
+            />
+          </aside>
+
+        </div>
+        <div class="col-sm-6">
+
+          <section>
+            <div class="h1 hidden-xs current-price">
+              <app-current-price [product]="product" [bids]="bids">
+              </app-current-price>
+            </div>
+            <app-remaining-time [product]="product">
+            </app-remaining-time>
+          </section>
+
+          <br />
+
+          <section *ngIf="!product.sold">
+            <div class="alert alert-danger" *ngIf="errors.createBid">
+              <h4>Error</h4>
+              {{ errors.createBid }}
+            </div>
+            <app-bid-form 
+              [product]="product"
+              [bids]="bids"
+              (onSubmit)="createBid($event)">
+            </app-bid-form>
+          </section>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-4">
+
+      <section class="bid-history">
+        <app-highest-bidder [bid]="bids[0]" *ngIf="bids.length">
+        </app-highest-bidder>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">Bid History</h4>
+          </div>
+          <div class="panel-body">
+            <app-bid-history [bids]="bids">
+            </app-bid-history>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+</article>
