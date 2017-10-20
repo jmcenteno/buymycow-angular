@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { ProductsService } from '../../services/products/products.service';
 import { BidsService } from '../../services/bids/bids.service';
@@ -16,6 +16,7 @@ export class ProductDetailsComponent implements OnInit {
   
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private productService: ProductsService,
     private bidsService: BidsService
   ) { 
@@ -27,49 +28,67 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit() {
 
     this.route.params.subscribe((params: any) => {
-
-      this.productService.getProductDetails(params.id)
-        .on('value', (snapshot) => {
-
-          if (snapshot.val()) {
-
-            this.product = {
-              key: params.id,
-              ...snapshot.val()
-            };
-
-          }
-
-        });
-
-      this.bidsService.getBidsByProduct(params.id)
-        .on('value', (snapshot: any) => {
-
-          const data = [];
-
-          if (snapshot.val()) {
-            console.log(snapshot.val())
-
-            snapshot.forEach((item: any) => {
-              
-              data.push({
-                key: item.key,
-                ...item.val()
-              });
-              
-            });
-
-            data.sort((a, b) => a.amount - b.amount);
-            data.reverse();
-            console.log(data)
-
-          }
-
-          this.bids = data;
-
-        });
+      
+      this.getProductDetails(params.id);
+      this.getBidHistory(params.id);
 
     });
+
+  }
+
+  private getProductDetails(key: number) {
+
+    this.productService.getProductDetails(key)
+      .on('value', (snapshot) => {
+
+        if (snapshot.val()) {
+
+          this.product = { key, ...snapshot.val() };
+
+        } else {
+
+          this.router.navigate(['404'])
+          
+        }
+
+      }, (error) => {
+
+        this.router.navigate(['404'])
+
+      });
+
+  }
+
+  private getBidHistory(key) {
+
+    this.bidsService.getBidsByProduct(key)
+      .on('value', (snapshot: any) => {
+
+        const data = [];
+
+        if (snapshot.val()) {
+
+          snapshot.forEach((item: any) => {
+            
+            data.push({
+              key: item.key,
+              ...item.val()
+            });
+            
+          });
+
+          data.sort((a, b) => a.amount - b.amount);
+          data.reverse();
+
+        }
+
+        this.bids = data;
+
+      }, () => {
+
+        this.bids = [];
+
+      });
 
   }
 
