@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BidHistoryComponent implements OnInit {
 
-  @Input() bids: any;
+  @Input() bids: any[];
 
   constructor() { }
 
