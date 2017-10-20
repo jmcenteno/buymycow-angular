@@ -53,9 +53,7 @@
             <app-bid-form 
               [product]="product"
               [bids]="bids"
-              [user]="currentUser"
-              (setUser)="setUser()"
-              (submit)="createBid($event)">
+              (onSubmit)="createBid($event)">
             </app-bid-form>
           </section>
 
