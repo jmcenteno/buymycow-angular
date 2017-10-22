@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import * as moment from 'moment';
+
+import { UtilitiesService } from '../../../shared/services/utilities/utilities.service';
 
 @Component({
   selector: 'app-single-product',
@@ -13,14 +14,14 @@ export class SingleProductComponent implements OnInit, OnDestroy {
   private timer: NodeJS.Timer;
   remainingTime: any;
 
-  constructor() { }
+  constructor(private utils: UtilitiesService) { }
 
   ngOnInit() {
 
-    this.remainingTime = this.getRemainingTime(this.product.endDate);
+    this.remainingTime = this.utils.getRemainingTime(this.product.endDate);
 
     this.timer = setInterval(() => {
-      this.remainingTime = this.getRemainingTime(this.product.endDate);
+      this.remainingTime = this.utils.getRemainingTime(this.product.endDate);
     }, 1000);
 
   }
@@ -28,30 +29,6 @@ export class SingleProductComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     
     clearInterval(this.timer);
-
-  }
-
-  private getRemainingTime(endDate): any {
-
-    let remainingTime: any = {
-      interval: 'minute(s)',
-      difference: 0
-    }
-  
-    const intervals: any[] = ['day', 'hour', 'minute'];
-    
-    for (let i = 0; i < intervals.length; i++) {
-      
-      const difference: any = moment(new Date(endDate)).diff(moment(), <any>`${intervals[i]}s`);
-      
-      if (difference > 0) {
-        remainingTime = { interval: `${intervals[i]}(s)`, difference };
-        break;
-      }
-  
-    }
-  
-    return remainingTime;
 
   }
 
