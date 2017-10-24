@@ -1,4 +1,6 @@
-# Buymycow
+# BuyMyCow
+
+Same as my other BuyMyCow app, but built in Angular.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.8.
 
