@@ -1,6 +1,7 @@
-import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
+import { BidsService } from '../../services/bids/bids.service';
 import { UserService } from '../../../shared/services/user/user.service';
 import { ValidationService } from '../../../shared/services/validation/validation.service';
 
@@ -9,24 +10,21 @@ import { ValidationService } from '../../../shared/services/validation/validatio
   templateUrl: './bid-form.component.html',
   styleUrls: ['./bid-form.component.scss']
 })
-export class BidFormComponent implements OnInit {
+export class BidFormComponent implements OnInit, OnChanges {
 
   @Input() product: any;
   @Input() bids: any;
 
-  @Output() onSubmit: EventEmitter<any>;
-
   form: FormGroup;
+  error: any;
+  bidAdded: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
     private validationService: ValidationService,
+    private bidsService: BidsService,
     private userService: UserService
-  ) {
-
-    this.onSubmit = new EventEmitter<any>();
-
-  }
+  ) { }
 
   ngOnInit() {
 
@@ -59,11 +57,26 @@ export class BidFormComponent implements OnInit {
 
     e.preventDefault();
 
-    const bid: any = Object.assign({}, this.form.value, { 
+    const bid: any = Object.assign({}, this.form.value, {
       date: (new Date()).toISOString()
     });
 
-    this.onSubmit.emit(bid);
+    this.bidsService.createBid(bid, this.product)
+      .then(() => {
+
+        this.error = null;
+        this.bidAdded = true;
+
+        setTimeout(() => {
+          this.bidAdded = false;
+        }, 5000);
+
+      })
+      .catch((error) => {
+
+        this.error = error;
+
+      });
 
   }
 

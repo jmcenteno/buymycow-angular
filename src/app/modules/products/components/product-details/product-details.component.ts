@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, TemplateRef, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { ProductsService } from '../../services/products/products.service';
@@ -13,44 +13,26 @@ export class ProductDetailsComponent implements OnInit {
 
   product: any;
   bids: any[];
-  errors: any;
-  
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private productService: ProductsService,
     private bidsService: BidsService
-  ) { 
+  ) {
 
     this.bids = [];
-    this.errors = {};
 
   }
 
   ngOnInit() {
 
     this.route.params.subscribe((params: any) => {
-      
+
       this.getProductDetails(params.id);
       this.getBidHistory(params.id);
 
     });
-
-  }
-
-  createBid(bid) {
-
-    this.bidsService.createBid(bid, this.product)
-      .then(() => {
-
-        this.errors.createBid = null;
-
-      })
-      .catch((error) => {
-        console.log(error)
-        this.errors.createBid = error.message;
-
-      });
 
   }
 
@@ -65,13 +47,13 @@ export class ProductDetailsComponent implements OnInit {
 
         } else {
 
-          this.router.navigate(['404'])
-          
+          this.router.navigate(['404']);
+
         }
 
       }, (error) => {
 
-        this.router.navigate(['404'])
+        this.router.navigate(['404']);
 
       });
 
@@ -87,12 +69,12 @@ export class ProductDetailsComponent implements OnInit {
         if (snapshot.val()) {
 
           snapshot.forEach((item: any) => {
-            
+
             data.push({
               key: item.key,
               ...item.val()
             });
-            
+
           });
 
           data.sort((a, b) => a.amount - b.amount);
