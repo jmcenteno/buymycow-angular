@@ -17,3 +17,8 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.modal .modal-content > .panel {
+  margin: 0;
+  border: none;
+}
