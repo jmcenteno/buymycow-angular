@@ -1,6 +1,8 @@
 import { Component, TemplateRef, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
+import { APP_NAME } from '../../../../config/app';
 import { ProductsService } from '../../services/products/products.service';
 import { BidsService } from '../../services/bids/bids.service';
 
@@ -17,6 +19,7 @@ export class ProductDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private titleService: Title,
     private productService: ProductsService,
     private bidsService: BidsService
   ) {
@@ -41,9 +44,13 @@ export class ProductDetailsComponent implements OnInit {
     this.productService.getProductDetails(key)
       .on('value', (snapshot) => {
 
-        if (snapshot.val()) {
+        const data = snapshot.val();
 
-          this.product = { key, ...snapshot.val() };
+        if (data) {
+
+          this.product = { key, ...data };
+
+          this.titleService.setTitle(`${APP_NAME} - Products - ${data.name}`);
 
         } else {
 

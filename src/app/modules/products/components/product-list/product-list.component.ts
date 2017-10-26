@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Title } from '@angular/platform-browser';
 
+import { APP_NAME } from '../../../../config/app';
 import { ProductsService } from '../../services/products/products.service';
 
 @Component({
@@ -13,13 +14,17 @@ export class ProductListComponent implements OnInit, OnDestroy {
   products: any[];
   subs: any;
 
-  constructor(private productsService: ProductsService) {
+  constructor(
+    private titleService: Title,
+    private productsService: ProductsService) {
 
     this.subs = {};
 
   }
 
   ngOnInit() {
+
+    this.titleService.setTitle(`${APP_NAME} - Products`);
 
     this.getProducts();
 
@@ -34,20 +39,20 @@ export class ProductListComponent implements OnInit, OnDestroy {
   private getProducts() {
 
     this.productsService.productList.on('value', (snapshot: any) => {
-      
+
       const data = [];
 
       snapshot.forEach((item: any) => {
-        
+
         data.push({
           key: item.key,
           ...item.val()
         });
-        
+
       });
 
       this.products = data;
-      
+
     });
 
   }
