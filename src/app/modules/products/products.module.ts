@@ -23,7 +23,17 @@ import { BidFormComponent } from './components/bid-form/bid-form.component';
     ProductsRoutingModule,
     SharedModule
   ],
-  declarations: [ProductListComponent, ProductDetailsComponent, ProductGridComponent, SingleProductComponent, CurrentPriceComponent, HighestBidderComponent, BidHistoryComponent, RemainingTimeComponent, BidFormComponent],
+  declarations: [
+    ProductListComponent,
+    ProductDetailsComponent,
+    ProductGridComponent,
+    SingleProductComponent,
+    CurrentPriceComponent,
+    HighestBidderComponent,
+    BidHistoryComponent,
+    RemainingTimeComponent,
+    BidFormComponent
+  ],
   providers: [
     ProductsService,
     BidsService

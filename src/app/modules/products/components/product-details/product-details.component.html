@@ -45,17 +45,28 @@
 
           <br />
 
-          <section *ngIf="!product.sold">
-            <div class="alert alert-danger" *ngIf="errors.createBid">
-              <h4>Error</h4>
-              {{ errors.createBid }}
+          <button type="button" *ngIf="!product.sold" class="btn btn-primary" (click)="formModal.show()">
+            Place Your Bid
+          </button>
+
+          <app-modal #formModal [config]="{ class: 'modal-sm', ignoreBackdropClick: true }">
+            <div class="panel panel-default">
+              
+              <div class="panel-heading">
+                <h4 class="modal-title pull-left">Place Your Bid</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="formModal.hide()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="clearfix"></div>
+              </div>
+              
+              <div class="panel-body">
+                <app-bid-form [product]="product" [bids]="bids">
+                </app-bid-form>
+              </div>
+              
             </div>
-            <app-bid-form 
-              [product]="product"
-              [bids]="bids"
-              (onSubmit)="createBid($event)">
-            </app-bid-form>
-          </section>
+          </app-modal>
 
         </div>
       </div>
