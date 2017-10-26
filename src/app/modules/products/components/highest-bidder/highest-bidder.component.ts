@@ -8,7 +8,6 @@ import { Component, OnInit, Input } from '@angular/core';
 export class HighestBidderComponent implements OnInit {
 
   @Input() bid: any;
-  
 
   constructor() { }
 

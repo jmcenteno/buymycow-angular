@@ -23,23 +23,23 @@ export class ProductGridComponent implements OnInit, OnChanges {
   }
 
   private paginate(arr): any[] {
-    
+
     const pages = [];
     let page = [];
-  
+
     arr.forEach((item, i) => {
-  
+
       page.push(item);
-  
+
       if ((i + 1) % 3 === 0 || (i + 1) >= arr.length) {
         pages.push(page);
         page = [];
       }
-  
+
     });
-  
+
     return pages;
-  
+
   }
 
 }

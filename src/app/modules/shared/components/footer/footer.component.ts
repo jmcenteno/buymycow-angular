@@ -12,7 +12,7 @@ export class FooterComponent implements OnInit {
   title: string;
   year: number;
 
-  constructor() { 
+  constructor() {
 
     this.title = APP_NAME;
     this.year = (new Date()).getFullYear();

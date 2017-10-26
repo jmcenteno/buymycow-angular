@@ -17,13 +17,13 @@ export class ValidationService {
     };
 
     const { value } = control;
-  
+
     return (
-      value == '' || validator.isEmail(value) ? 
-      null : 
+      value === '' || validator.isEmail(value) ?
+      null :
       invalid
     );
-  
+
   }
 
   isNumeric(control: FormControl) {
@@ -40,7 +40,7 @@ export class ValidationService {
       return null;
     }
 
-    return value == '' ? null : invalid;
+    return value === '' ? null : invalid;
 
   }
 

@@ -10,7 +10,7 @@ export class CurrentPriceComponent implements OnInit, OnChanges {
 
   @Input() bids: any[];
   @Input() product: any;
-  
+
   currentPrice: number;
 
   constructor() { }

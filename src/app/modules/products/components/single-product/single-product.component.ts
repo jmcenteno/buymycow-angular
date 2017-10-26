@@ -27,7 +27,7 @@ export class SingleProductComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    
+
     clearInterval(this.timer);
 
   }

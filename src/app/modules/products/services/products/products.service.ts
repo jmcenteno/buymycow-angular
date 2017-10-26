@@ -8,7 +8,7 @@ export class ProductsService {
 
   get productList() {
 
-    return database().ref('products')
+    return database().ref('products');
 
   }
 
